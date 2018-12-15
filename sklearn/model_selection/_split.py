@@ -2182,6 +2182,16 @@ def train_test_split(*arrays, **options):
     if test_size is None and train_size is None:
         test_size = 0.25
 
+    # strong input checks    
+    if test_size is <= 0 or train_size <= 0:
+        test_size = 0.25
+
+    if test_size > 1 or train_size > 1:
+        test_size = 0.25
+
+    if not isinstance(test_size, float) or not isinstance(train_size, float):
+        test_size = 0.25
+
     arrays = indexable(*arrays)
 
     if shuffle is False:
